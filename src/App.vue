@@ -1,26 +1,44 @@
 <template>
     <div class="container">
-        <h1>Hello!</h1>
-        <p>Tekst in raar font</p>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                70%
-            </div>
-        </div>
+        <progress-bar :nr-of-quotes="Quotes.length"></progress-bar>
+        <quote-form :quotes="Quotes"></quote-form>
+        <quote v-for="(quote, index) in Quotes" :key="index" :quote="quote" @click.native="deleteQuote(index)"></quote>
     </div>
 </template>
 
 <script>
+    import ProgressBar from './components/ProgressBar.vue';
+    import QuoteForm from './components/QuoteForm.vue';
+    import Quote from './components/Quote.vue';
+
     export default {
-        
+        data: function() {
+            return {
+                Quotes: ['Dit is een quote']
+            }
+        },
+        components: {
+            progressBar: ProgressBar,
+            quoteForm: QuoteForm,
+            quote: Quote
+        },
+        methods: {
+            deleteQuote(index) {
+                this.Quotes.splice(index,1);
+            }
+        }
     }
 </script>
 
 <style>
     @import url("https://fonts.googleapis.com/css?family=Arizonia");
 
-    p {
-        font-family: Arizonia;
-        font-size: 12em;
+    body {
+        padding-top: 50px;
     }
+    .container {
+        padding: 40px 15px;
+        text-align: center;
+    }
+
 </style>
