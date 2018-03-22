@@ -1,7 +1,7 @@
 <template>
     <div class="panel panel-default">
         <div class="panel-body">
-            {{ Quote }}
+            {{ quote }}
         </div>
     </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 export default {
     props: {
-        Quote: {
+        quote: {
             type: String,
             required: true
         }

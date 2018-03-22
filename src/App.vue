@@ -2,7 +2,10 @@
     <div class="container">
         <progress-bar :nr-of-quotes="Quotes.length"></progress-bar>
         <quote-form :quotes="Quotes"></quote-form>
-        <quote v-for="(quote, index) in Quotes" :key="index" :quote="quote" @click.native="deleteQuote(index)"></quote>
+        <div class="clearfix">
+            <quote v-for="(quote, index) in Quotes" :key="index" :quote="quote" @click.native="deleteQuote(index)"></quote>
+        </div>
+        <div class="alert alert-info" role="alert">Tip: Click on a quote to delete it.</div>
     </div>
 </template>
 
@@ -31,14 +34,20 @@
 </script>
 
 <style>
-    @import url("https://fonts.googleapis.com/css?family=Arizonia");
+@import url("https://fonts.googleapis.com/css?family=Arizonia");
 
-    body {
-        padding-top: 50px;
-    }
-    .container {
-        padding: 40px 15px;
-        text-align: center;
-    }
+body {
+    padding-top: 50px;
+}
+.container {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
 </style>
